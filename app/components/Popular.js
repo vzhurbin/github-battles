@@ -6,7 +6,7 @@ class Popular extends React.Component {
   };
 
   updateLanguage = lang => {
-    this.setState({ selectedLanguage: lang });
+    return () => this.setState({ selectedLanguage: lang });
   };
 
   render() {
@@ -20,7 +20,7 @@ class Popular extends React.Component {
             return (
               <li
                 style={lang === selectedLanguage ? { color: '#d0021b' } : null}
-                onClick={() => this.updateLanguage(lang)}
+                onClick={this.updateLanguage(lang)}
                 key={lang}
               >
                 {lang}
