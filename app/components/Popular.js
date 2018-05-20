@@ -1,6 +1,10 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 
+function ListItem(props) {
+  return <li>{props.friend}</li>
+}
+
 function SelectLanguage(props) {
   var languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
 
