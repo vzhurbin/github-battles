@@ -4,6 +4,33 @@ import PropTypes from 'prop-types';
 import { fetchPopularRepos } from '../utils/api';
 import Loading from './Loading';
 
+function SelectLanguage({ selectedLanguage, onSelect }) {
+  const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+
+  return (
+    <ul className="languages">
+      {languages.map((lang) => {
+        return (
+          <li
+            style={
+              lang === selectedLanguage ? { color: '#d0021b' } : null
+            }
+            onClick={() => onSelect(lang)}
+            key={lang}
+          >
+            {lang}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+SelectLanguage.propTypes = {
+  selectedLanguage: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
+
 function RepoGrid({ repos }) {
   return (
     <ul className="popular-list">
@@ -35,33 +62,6 @@ function RepoGrid({ repos }) {
 
 RepoGrid.propTypes = {
   repos: PropTypes.array.isRequired,
-};
-
-function SelectLanguage({ selectedLanguage, onSelect }) {
-  const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
-
-  return (
-    <ul className="languages">
-      {languages.map((lang) => {
-        return (
-          <li
-            style={
-              lang === selectedLanguage ? { color: '#d0021b' } : null
-            }
-            onClick={() => onSelectlang}
-            key={lang}
-          >
-            {lang}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-SelectLanguage.propTypes = {
-  selectedLanguage: PropTypes.string.isRequired,
-  onSelect: PropTypes.func.isRequired,
 };
 
 class Popular extends React.Component {
