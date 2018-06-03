@@ -1,9 +1,9 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
 var config = {
-  entry: ['babel-polyfill', './app/index.js'],
+  entry: ['babel-polyfill', 'whatwg-fetch', './app/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
@@ -19,16 +19,7 @@ var config = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            // options: { minimize: true },
-          },
-        ],
-      },
+      }
     ],
   },
 
