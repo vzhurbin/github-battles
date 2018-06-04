@@ -5,7 +5,9 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "NODE_ENV='production' webpack -p",
+    "build-win": "SET NODE_ENV='production' && webpack -p",
     "deploy": "npm run build && firebase deploy",
+    "deploy-win": "npm run build-win && firebase deploy",
     "lint": "eslint --ext .jsx --ext .js ./src",
     "lint-fix": "eslint --fix --ext .jsx --ext .js ./src",
     "firebase-init": "firebase login && firebase init"
