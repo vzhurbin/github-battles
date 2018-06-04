@@ -4,24 +4,24 @@ import PropTypes from 'prop-types';
 const styles = {
   content: {
     textAlign: 'center',
-    fontSize: '35px'
-  }
+    fontSize: '35px',
+  },
 };
 
 class Loading extends React.Component {
   static propTypes = {
-    text: PropTypes.string.isRequired,
-    speed: PropTypes.number.isRequired,
+    text: PropTypes.string,
+    speed: PropTypes.number,
   };
 
   static defaultProps = {
     text: 'Loading',
-    speed: 300
+    speed: 300,
   };
 
   state = {
-    text: this.props.text
-  }
+    text: this.props.text,
+  };
 
   componentDidMount() {
     const { text, speed } = this.props;
@@ -29,7 +29,7 @@ class Loading extends React.Component {
     this.interval = window.setInterval(() => {
       this.state.text === stopper
         ? this.setState(() => ({ text }))
-        : this.setState((prevState) => ({ text: `${prevState.text}.` }));
+        : this.setState(prevState => ({ text: `${prevState.text}.` }));
     }, speed);
   }
 
@@ -38,11 +38,7 @@ class Loading extends React.Component {
   }
 
   render() {
-    return (
-      <p style={styles.content}>
-        {this.state.text}
-      </p>
-    )
+    return <p style={styles.content}>{this.state.text}</p>;
   }
 }
 
